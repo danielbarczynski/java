@@ -1,12 +1,9 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class ex1 {
+public class exercises {
 
     public static void main(String[] args) {
         File file = new File("file.txt");
@@ -25,5 +22,17 @@ public class ex1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        String text = "updated text";
+        try (
+                FileOutputStream stream = new FileOutputStream("file.txt");
+                OutputStreamWriter writer = new OutputStreamWriter(stream, StandardCharsets.UTF_8)
+        ) {
+            writer.write(text);
+            writer.flush();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
-}
+    }
+
