@@ -3,7 +3,7 @@ package com.company;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class exercises {
+public class ex1ex2 {
 
     public static void main(String[] args) {
         File file = new File("file.txt");
