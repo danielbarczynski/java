@@ -1,4 +1,4 @@
-package com.company;
+package com.company.lab1;
 
 public class ex3{
      static int searchIndex(int [] array, int value) {
