@@ -5,5 +5,7 @@ https://dirask.com/posts/WSEI-2021-2022-lato-labN-2-PROGN-Programowanie-aplikacj
 
 Spring boot:
 https://dirask.com/posts/Spring-Boot-2-tworzenie-nowego-projetu-przy-u%C5%BCyciu-Spring-Initializer-DdorX1
+Hello world:
+https://dirask.com/posts/Spring-Boot-2-tworzenie-strony-Hello-World-jEgl8D
 
 mvn repository log4j
