@@ -25,12 +25,4 @@ public class UserEntity {
     public void setId(int id) {
         this.id = id;
     }
-
-    public static Object getUsers() {
-        List<UserEntity> users = new ArrayList<>();
-        users.add(new UserEntity(1, "daniel"));
-        users.add(new UserEntity(2, "mike"));
-        users.add(new UserEntity(3, "will"));
-        return users;
-    }
 }

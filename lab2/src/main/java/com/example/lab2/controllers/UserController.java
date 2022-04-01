@@ -1,17 +1,13 @@
 package com.example.lab2.controllers;
 
 import com.example.lab2.models.UserEntity;
-import com.example.lab2.models.UserEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -28,31 +24,42 @@ public class UserController {
 //        return map;
 //    }
 
+    List<UserEntity> users = new ArrayList<>();
+////    List<UserEntity> users = new ArrayList<>(new UserEntity(1, "daniel"), new UserEntity(2, "mike"), new UserEntity(3, "will"));
+//        public Object usersInit() {
+//            users.add(new UserEntity(1, "daniel"));
+//            users.add(new UserEntity(2, "mike"));
+//            users.add(new UserEntity(3, "will"));
+//            return users;
+//        }
+
 
     @ResponseBody
     @RequestMapping("/users")
-    public Object users()
-    {
-        return UserEntity.getUsers();
+    public Object getUsers() {
+        users.add(new UserEntity(1, "daniel"));
+        users.add(new UserEntity(2, "mike"));
+        users.add(new UserEntity(3, "will"));
+        return users;
     }
-
 //    @ResponseBody
 //    @RequestMapping("/users/{id}/get") // users/123/get
 //    public String GetUser(@PathVariable Long id) {
 //        return "id: " + id;
 //    }
-//
+////
 //    @ResponseBody
 //    @RequestMapping("/users/{id}/remove") // users/123/remove
-//    public Map<UserEntity> RemoveUser(@PathVariable Long id) {
-//        map.remove(id);
-//        return map;
+//    public  Object removeUser(@PathVariable int id) {
+//        users.remove()
 //    }
 //
-//    @RequestMapping("/users/add") // user/add?name=John&age=23
-//    public Map<UserEntity>  AddUser(@PathVariable String name, @PathVariable Long id) {
-//        map.put(name, id);
-//        return map;
-//    }
+@ResponseBody
+    //@PathVariable int id, @PathVariable String name
+    @RequestMapping("/users/add") // user/add?name=John&age=23
+    public Object addUser(@RequestParam int id, @RequestParam String name) {
+        users.add(new UserEntity(id, name));
+        return users;
+    }
 
 }
