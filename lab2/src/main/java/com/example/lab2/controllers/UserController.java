@@ -12,28 +12,8 @@ import java.util.List;
 
 @Controller
 public class UserController {
-//    private HashMap<UserEntity> map = new HashMap<>();
-//    UserEntity user1 = new UserEntity(1, "daniel");
-//    UserEntity user2 = new UserEntity(2, "mike");
-//    UserEntity user3 = new UserEntity(3, "will");
-//    @GetMapping
-
-//    public Map<UserEntity> users() {
-//        map.put(user1);
-//        map.put(user2);
-//        map.put(user3);
-//        return map;
-//    }
 
     List<UserEntity> users = new ArrayList<>();
-////    List<UserEntity> users = new ArrayList<>(new UserEntity(1, "daniel"), new UserEntity(2, "mike"), new UserEntity(3, "will"));
-//        public Object usersInit() {
-//            users.add(new UserEntity(1, "daniel"));
-//            users.add(new UserEntity(2, "mike"));
-//            users.add(new UserEntity(3, "will"));
-//            return users;
-//        }
-
 
     @ResponseBody
     @RequestMapping("/users")
@@ -43,19 +23,19 @@ public class UserController {
         users.add(new UserEntity(3, "will"));
         return users;
     }
-//    @ResponseBody
-//    @RequestMapping("/users/{id}/get") // users/123/get
-//    public String GetUser(@PathVariable Long id) {
-//        return "id: " + id;
-//    }
-////
-@ResponseBody
-@RequestMapping("/users/{id}/remove")
-public Object removeUser(@PathVariable int id) {
-    users.remove(id);
-    return users;
-}
-//@PathVariable int id, @PathVariable String name
+
+    @ResponseBody
+    @RequestMapping("/users/{id}/get")
+    public Object getUser(@PathVariable int id) {
+        return users.get(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/users/{id}/remove")
+    public Object removeUser(@PathVariable int id) {
+        users.remove(id);
+        return users;
+    }
 
     @ResponseBody
     @RequestMapping("/users/add") // user/add?name=John&age=23
@@ -63,6 +43,4 @@ public Object removeUser(@PathVariable int id) {
         users.add(new UserEntity(id, name));
         return users;
     }
-//    }
-//
 }
