@@ -2,6 +2,7 @@ package com.example.lab2.controllers;
 
 import com.example.lab2.models.UserEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,18 +49,20 @@ public class UserController {
 //        return "id: " + id;
 //    }
 ////
-//    @ResponseBody
-//    @RequestMapping("/users/{id}/remove") // users/123/remove
-//    public  Object removeUser(@PathVariable int id) {
-//        users.remove()
-//    }
-//
 @ResponseBody
-    //@PathVariable int id, @PathVariable String name
+@RequestMapping("/users/{id}/remove")
+public Object removeUser(@PathVariable int id) {
+    users.remove(id);
+    return users;
+}
+//@PathVariable int id, @PathVariable String name
+
+    @ResponseBody
     @RequestMapping("/users/add") // user/add?name=John&age=23
     public Object addUser(@RequestParam int id, @RequestParam String name) {
         users.add(new UserEntity(id, name));
         return users;
     }
-
+//    }
+//
 }
