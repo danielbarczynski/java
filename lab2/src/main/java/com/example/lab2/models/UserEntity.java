@@ -7,8 +7,8 @@ import java.util.List;
 
 @Service
 public class UserEntity {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public UserEntity() {
     }
@@ -24,5 +24,13 @@ public class UserEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
