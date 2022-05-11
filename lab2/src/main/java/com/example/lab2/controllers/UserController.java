@@ -1,46 +1,30 @@
 package com.example.lab2.controllers;
 
 import com.example.lab2.models.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import responses.UserResponses;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
 public class UserController {
+    @Autowired
+    private UserService userService;
 
-    List<UserEntity> users = new ArrayList<>();
-
+    // http://localhost:2000/api/users?page-number=1&page-size=20
+    @RequestMapping(
+            value = "/api/users",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
     @ResponseBody
-    @RequestMapping("/users")
-    public Object getUsers() {
-        users.add(new UserEntity(1, "daniel"));
-        users.add(new UserEntity(2, "mike"));
-        users.add(new UserEntity(3, "will"));
-        return users;
-    }
-
-    @ResponseBody
-    @RequestMapping("/users/{id}/get")
-    public Object getUser(@PathVariable int id) {
-        return users.get(id);
-    }
-
-    @ResponseBody
-    @RequestMapping("/users/{id}/remove")
-    public Object removeUser(@PathVariable int id) {
-        users.remove(id);
-        return users;
-    }
-
-    @ResponseBody
-    @RequestMapping("/users/add") // users/add?id=5&name=bro
-    public Object addUser(@RequestParam int id, @RequestParam String name) {
-        users.add(new UserEntity(id, name));
-        return users;
+    public Object apiUsers(@RequestParam(value = "page-number", defaultValue = "1") Integer pageNumber,
+    @RequestParam(value = "page-size", defaultValue = "20") Integer pageSize){
+        return this.userService.getUserPage(pageNumber, pageSize);
     }
 }
