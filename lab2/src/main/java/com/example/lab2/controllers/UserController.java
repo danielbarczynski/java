@@ -27,4 +27,17 @@ public class UserController {
     @RequestParam(value = "page-size", defaultValue = "20") Integer pageSize){
         return this.userService.getUserPage(pageNumber, pageSize);
     }
+
+    @RequestMapping(
+            value = "/api/user/create",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ResponseBody
+    public UserEntity createUser(@RequestBody UserEntity user) {
+        this.userService.createUser(user.getName(), user.getEmail());
+        return user;
+    }
 }
+
