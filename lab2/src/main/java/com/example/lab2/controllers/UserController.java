@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping("/users/add") // user/add?name=John&age=23
+    @RequestMapping("/users/add") // users/add?id=5&name=bro
     public Object addUser(@RequestParam int id, @RequestParam String name) {
         users.add(new UserEntity(id, name));
         return users;

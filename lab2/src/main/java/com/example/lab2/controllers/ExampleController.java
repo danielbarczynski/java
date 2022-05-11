@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ExampleController {
-
+    // brak response body wiec wyswietla plik statyczny
     @RequestMapping("/example")
     public String example()
     {
