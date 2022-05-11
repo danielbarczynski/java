@@ -1,6 +1,6 @@
 Aktualne repozytorium z przedmiotu "Programowanie aplikacji backendowych".
 
-**Ćwiczenie lab2** na osobnej gałęzi.
+**Ćwiczenia z laboratoriów są na osobnych gałęziach** 
 
 Strona przedmiotowa: 
 
