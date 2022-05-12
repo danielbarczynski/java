@@ -1,15 +1,11 @@
 package com.example.lab2.controllers;
 
 import com.example.lab2.models.UserEntity;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import responses.UserResponses;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -46,5 +42,10 @@ public class UserService {
     public UserEntity updateUser(int id, UserEntity user) {
         user.setId(id);
         return users.set(id, user);
+    }
+
+    public Map<String, Boolean> removeUser(int id) {
+        users.remove(id);
+        return Collections.singletonMap("result", true);
     }
 }

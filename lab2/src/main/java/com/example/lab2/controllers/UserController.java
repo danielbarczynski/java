@@ -1,15 +1,12 @@
 package com.example.lab2.controllers;
-
 import com.example.lab2.models.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import responses.UserResponses;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -59,6 +56,17 @@ public class UserController {
     @ResponseBody
     public UserEntity updateUser(@PathVariable("id") int id, @RequestBody UserEntity user) {
         return this.userService.updateUser(id, user);
+    }
+
+    @RequestMapping(
+            value = "/api/users/{id}/remove",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    @ResponseBody
+    public Map<String, Boolean> removeUser(@PathVariable("id") int id) {
+        return this.userService.removeUser(id);
     }
 }
 
