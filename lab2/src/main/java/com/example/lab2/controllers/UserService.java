@@ -38,4 +38,13 @@ public class UserService {
         users.add(user);
         return user;
     }
+
+    public UserEntity getUser(int id) {
+        return users.get(id);
+    }
+
+    public UserEntity updateUser(int id, UserEntity user) {
+        user.setId(id);
+        return users.set(id, user);
+    }
 }

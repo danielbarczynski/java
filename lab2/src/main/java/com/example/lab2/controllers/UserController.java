@@ -24,7 +24,7 @@ public class UserController {
     )
     @ResponseBody
     public Object apiUsers(@RequestParam(value = "page-number", defaultValue = "1") Integer pageNumber,
-    @RequestParam(value = "page-size", defaultValue = "20") Integer pageSize){
+                           @RequestParam(value = "page-size", defaultValue = "20") Integer pageSize) {
         return this.userService.getUserPage(pageNumber, pageSize);
     }
 
@@ -38,5 +38,28 @@ public class UserController {
     public UserEntity createUser(@RequestBody UserEntity user) {
         return this.userService.createUser(user);
     }
+
+    @RequestMapping(
+            value = "/api/users/{id}",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    @ResponseBody
+    public UserEntity getUser(@PathVariable("id") int id) {
+        return this.userService.getUser(id);
+    }
+
+    @RequestMapping(
+            value = "/api/users/{id}/update",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    @ResponseBody
+    public UserEntity updateUser(@PathVariable("id") int id, @RequestBody UserEntity user) {
+        return this.userService.updateUser(id, user);
+    }
 }
+
 
