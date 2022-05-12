@@ -36,8 +36,7 @@ public class UserController {
     )
     @ResponseBody
     public UserEntity createUser(@RequestBody UserEntity user) {
-        this.userService.createUser(user.getName(), user.getEmail());
-        return user;
+        return this.userService.createUser(user);
     }
 }
 

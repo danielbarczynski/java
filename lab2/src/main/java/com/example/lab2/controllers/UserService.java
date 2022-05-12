@@ -34,8 +34,8 @@ public class UserService {
         return new UserResponses(pageNumber, pageCount, pageSize, totalCount, users);
     }
 
-    public Object createUser(@RequestParam String name, @RequestParam String email) {
-        users.add(new UserEntity(1, name, email));
-        return users;
+    public UserEntity createUser(UserEntity user) {
+        users.add(user);
+        return user;
     }
 }
