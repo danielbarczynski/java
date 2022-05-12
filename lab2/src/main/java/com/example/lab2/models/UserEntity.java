@@ -12,8 +12,6 @@ public class UserEntity {
     private String email;
 
     public UserEntity() {}
-    public UserEntity(int nextInt, String next) {
-    }
     public UserEntity(int id, String name, String email) {
         this.id = id;
         this.email = email;

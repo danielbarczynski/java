@@ -20,7 +20,7 @@ public class UserService {
     private void onCreate() throws FileNotFoundException {
         try(Scanner scanner = new Scanner(new FileReader("C:\\Users\\itsmy\\IdeaProjects\\lab2\\lab2\\src\\main\\resources\\static\\allUsers"))) {
             while (scanner.hasNext()) {
-                users.add(new UserEntity(scanner.nextInt(), scanner.next()));
+                users.add(new UserEntity(scanner.nextInt(), scanner.next(), scanner.next()));
                 }
             }
         }
@@ -61,7 +61,7 @@ public class UserService {
     private void onDestroy() throws IOException {
         try (FileWriter writer = new FileWriter("C:\\Users\\itsmy\\IdeaProjects\\lab2\\lab2\\src\\main\\resources\\static\\allUsers")) {
             for (UserEntity user : users) {
-                    writer.write(user.getId() + user.getName());
+                    writer.write(user.getId() + " " + user.getEmail() + " " + user.getName());
                 }
             }
     }
