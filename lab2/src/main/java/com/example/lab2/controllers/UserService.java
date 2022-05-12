@@ -47,4 +47,9 @@ public class UserService {
         user.setId(id);
         return users.set(id, user);
     }
+
+    public boolean removeUser(int id) {
+        users.remove(id);
+        return true;
+    }
 }

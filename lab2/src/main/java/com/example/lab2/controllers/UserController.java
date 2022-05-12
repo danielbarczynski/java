@@ -60,6 +60,17 @@ public class UserController {
     public UserEntity updateUser(@PathVariable("id") int id, @RequestBody UserEntity user) {
         return this.userService.updateUser(id, user);
     }
+
+    @RequestMapping(
+            value = "/api/users/{id}/remove",
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+
+    @ResponseBody
+    public boolean removeUser(@PathVariable("id") int id) {
+        return this.userService.removeUser(id);
+    }
 }
 
 
