@@ -5,6 +5,11 @@ import org.springframework.stereotype.Service;
 import responses.UserResponses;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -12,10 +17,13 @@ public class UserService {
     private List<UserEntity> users = new ArrayList<>();
 
     @PostConstruct
-    private void onCreate() {
-        for (int i = 0; i < 51; i++)
-            this.users.add(new UserEntity(1 + i, "user" + i, "user@email" + i));
-    }
+    private void onCreate() throws FileNotFoundException {
+        try(Scanner scanner = new Scanner(new FileReader("src/main/resources/allUsers"))) {
+            while (scanner.hasNext()) {
+                users.add(new UserEntity(scanner.nextInt(), scanner.next()));
+                }
+            }
+        }
 
     public UserResponses getUserPage(Integer pageNumber, Integer pageSize) {
         int pageOffSet = (pageNumber - 1) * pageSize; // 0 * x strona = zwraca x strone
@@ -47,5 +55,14 @@ public class UserService {
     public Map<String, Boolean> removeUser(int id) {
         users.remove(id);
         return Collections.singletonMap("result", true);
+    }
+
+    @PreDestroy
+    private void onDestroy() throws IOException {
+        try (FileWriter writer = new FileWriter("src/main/resources/allUsers")) {
+            for (UserEntity user : users) {
+                    writer.write(user.getId() + user.getName());
+                }
+            }
     }
 }
