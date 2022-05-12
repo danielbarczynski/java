@@ -18,7 +18,7 @@ public class UserService {
 
     @PostConstruct
     private void onCreate() throws FileNotFoundException {
-        try(Scanner scanner = new Scanner(new FileReader("src/main/resources/allUsers"))) {
+        try(Scanner scanner = new Scanner(new FileReader("C:\\Users\\itsmy\\IdeaProjects\\lab2\\lab2\\src\\main\\resources\\static\\allUsers"))) {
             while (scanner.hasNext()) {
                 users.add(new UserEntity(scanner.nextInt(), scanner.next()));
                 }
@@ -59,7 +59,7 @@ public class UserService {
 
     @PreDestroy
     private void onDestroy() throws IOException {
-        try (FileWriter writer = new FileWriter("src/main/resources/allUsers")) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\itsmy\\IdeaProjects\\lab2\\lab2\\src\\main\\resources\\static\\allUsers")) {
             for (UserEntity user : users) {
                     writer.write(user.getId() + user.getName());
                 }
