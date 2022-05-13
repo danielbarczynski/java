@@ -14,7 +14,7 @@ import java.util.*;
 
 @Service
 public class UserService {
-    private List<UserEntity> users = new ArrayList<>();
+    public List<UserEntity> users = new ArrayList<>();
 
     @PostConstruct
     private void onCreate() throws FileNotFoundException {
@@ -39,6 +39,9 @@ public class UserService {
     }
 
     public UserEntity createUser(UserEntity user) {
+        user.setId(5);
+        user.setEmail("gg");
+        user.setName("ff");
         users.add(user);
         return user;
     }
@@ -49,7 +52,8 @@ public class UserService {
 
     public UserEntity updateUser(int id, UserEntity user) {
         user.setId(id);
-        return users.set(id, user);
+        users.set(id, user);
+        return user;
     }
 
     public Map<String, Boolean> removeUser(int id) {
@@ -61,7 +65,7 @@ public class UserService {
     private void onDestroy() throws IOException {
         try (FileWriter writer = new FileWriter("C:\\Users\\itsmy\\IdeaProjects\\lab2\\lab2\\src\\main\\resources\\static\\allUsers")) {
             for (UserEntity user : users) {
-                    writer.write(user.getId() + " " + user.getEmail() + " " + user.getName());
+                    writer.write(user.getId() + " " + user.getEmail() + " " + user.getName() + " ");
                 }
             }
     }
