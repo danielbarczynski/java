@@ -29,4 +29,6 @@ Harmonogram:
 15. Funkcja migracji
 16. Funkcja seedowania danych
 17. Udostepnienie aplikacji na azure
+18. Implementacja biblioteki SignalR
+19. Implementacja biblioteki Identity
 
