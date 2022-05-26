@@ -23,4 +23,6 @@ Harmonogram:
 9. Funkcja tworzenia pokoju chatu
 10. Funkcja zapraszania użytkowników do pokoju chatu
 11. Funkcja zabezpieczenia hasłem pokoju chatu
+12. Funkcja walidacji użytkowników
+13. Funkcja autoryzacji użytkowników
 
