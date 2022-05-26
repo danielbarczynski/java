@@ -28,4 +28,5 @@ Harmonogram:
 14. Funkcja łączenia się z bazą danych
 15. Funkcja migracji
 16. Funkcja seedowania danych
+17. Udostepnienie aplikacji na azure
 
