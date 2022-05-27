@@ -8,7 +8,7 @@ https://dirask.com/posts/WSEI-2021-2022-lato-labN-2-PROGN-Programowanie-aplikacj
 
 Główny projekt:
 
-
+https://github.com/danielbarczynski/pogaduj
 
 Harmonogram:
 
